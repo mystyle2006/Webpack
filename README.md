@@ -199,4 +199,4 @@ now you can see the newly created ```/dist``` folder.
 you might be wondering how webpack and the plugins seem to know what files are being generaged.
 The answer is in the manifest that webpack keeps to track how all the modules map to the output bundles.
 
-If you like to know about managing webpack's ```output``` in other way. you should check the plugin, [Webpack Manifest Plugin](Webpack Manifest Plugin)
+If you like to know about managing webpack's ```output``` in other way. you should check the plugin, [Webpack Manifest Plugin](https://github.com/danethurber/webpack-manifest-plugin)
