@@ -159,3 +159,37 @@ const path = require('path');
 We had to change output options when we change our entry points. but this plugin will help us not to do it because this will create ```index.html``` with the bundle files automatically.
 
 Now it's time to run ```npm run build``` and check out the ```/index``` folder.
+
+## Cleaning up the ```/dist``` folder
+As you might have noticed after the past build, out ```/dist``` folder has become quite cluttered. However, ```clean-webpack-plugin``` will create ```/dist``` folder automatically with only used files.
+
+and now install the plugins and give it a edit like below.
+
+```
+npm install clean-webpack-plugin --save-dev
+```
+
+```
+  const path = require('path');
+  const HtmlWebpackPlugin = require('html-webpack-plugin');
++ const CleanWebpackPlugin = require('clean-webpack-plugin');
+
+  module.exports = {
+    entry: {
+      app: './src/index.js',
+      print: './src/print.js'
+    },
+    plugins: [
++     new CleanWebpackPlugin(['dist']),
+      new HtmlWebpackPlugin({
+        title: 'Output Management'
+      })
+    ],
+    output: {
+      filename: '[name].bundle.js',
+      path: path.resolve(__dirname, 'dist')
+    }
+  };
+```
+
+now you can see the newly created ```/dist``` folder.
