@@ -126,3 +126,36 @@ After build, we cann see the files ```app.bundle.js``` and ```print.bundle.js```
 
 but what would happen if we need other .js scripts or change the name of entry points's name? we might change our output options as well.
 So let's fix with this plugin [HtmlWebpackPlugin](https://webpack.js.org/plugins/html-webpack-plugin/)
+
+## Setting up HtmlWebpackPlugin
+First install the plugin and adjust the ```webpack.config.js```
+
+```
+npm install --save-dev html-webpack-plugin
+```
+
+##### webpack.config.js
+```js
+const path = require('path');
++ const HtmlWebpackPlugin = require('html-webpack-plugin');
+
+  module.exports = {
+    entry: {
+      app: './src/index.js',
+      print: './src/print.js'
+    },
++   plugins: [
++     new HtmlWebpackPlugin({
++       title: 'Output Management'
++     })
++   ],
+    output: {
+      filename: '[name].bundle.js',
+      path: path.resolve(__dirname, 'dist')
+    }
+  };
+```
+
+We had to change output options when we change our entry points. but this plugin will help us not to do it because this will create ```index.html``` with the bundle files automatically.
+
+Now it's time to run ```npm run build``` and check out the ```/index``` folder.
